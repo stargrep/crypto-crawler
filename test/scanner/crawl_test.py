@@ -1,5 +1,5 @@
 import unittest
-import time
+from src.common.app_util import get_system_milli
 from src.crawler import get_web_content
 from src.common.app_constant import BITCOIN_PRICE_URL
 
@@ -7,7 +7,7 @@ from src.common.app_constant import BITCOIN_PRICE_URL
 class SimpleTest(unittest.TestCase):
 
     crypto_map = {}
-    price_milli = time.time_ns() // 1000000
+    price_milli = get_system_milli()
 
     def setUp(self):
         pass

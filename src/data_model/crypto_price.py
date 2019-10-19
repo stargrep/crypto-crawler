@@ -10,4 +10,3 @@ class CryptoPrice(Model):
     volume_p: float
     fee_type: str
     coin_pair: str
-    is_active: bool = True
