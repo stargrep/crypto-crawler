@@ -1,12 +1,12 @@
 import unittest
 import time
-from src.data_model import CryptoPrice
+from src.crawler import get_web_content
+from src.common.app_constant import BITCOIN_PRICE_URL
 
 
 class SimpleTest(unittest.TestCase):
 
-    crypto = None
-    expected_crypto_map = None
+    crypto_map = {}
     price_milli = time.time_ns() // 1000000
 
     def setUp(self):
@@ -18,10 +18,12 @@ class SimpleTest(unittest.TestCase):
         self.__compareCrypto__()
 
     def __setupCrypto__(self):
-        pass
+        self.crypto_map = get_web_content(BITCOIN_PRICE_URL)
 
     def __compareCrypto__(self):
-        self.assertTrue(self.crypto.as_dict() == self.expected_crypto_map)
+        # this is NOT a very robust test
+        print(self.crypto_map)
+        self.assertTrue(len(self.crypto_map) > 0)
 
 
 if __name__ == '__main__':

@@ -4,7 +4,7 @@ import threading
 import time
 import requests
 from src.crawler import get_web_content
-from .app_constant import COIN_NAME_BITCOIN
+from src.common.app_constant import COIN_NAME_BITCOIN
 
 app = Flask(__name__)
 

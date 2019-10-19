@@ -3,37 +3,9 @@ from bs4 import BeautifulSoup
 import time
 import re
 from src.data_model import CryptoPrice
-from src.main import COIN_NAME_BITCOIN
-from src.main import TARGET_EXCHANGE_MAP
+from src.common import COIN_NAME_BITCOIN
+from src.common import TARGET_EXCHANGE_MAP
 
-
-# def convert_volume(volume_str):
-#     """
-#     '$404,691,250' -> '404691250'
-#     :param volume_str: string
-#     :return: string
-#     """
-#     return volume_str.replace(",", "").replace("$", "")
-#
-#
-# def convert_money_float(symbol):
-#     """
-#     '$8105.52' -> 8105.52
-#     :param symbol: string
-#     :return: float
-#     """
-#     if "$" in symbol:
-#
-#     return float(symbol.replace("$", ""))
-#
-#
-# def convert_percentage(p_str):
-#     """
-#     handle 10.95% or .70%
-#     :param p_str: string
-#     :return: float
-#     """
-#     return float(p_str.replace("%", ""))
 
 def convert_as_number(symbol):
     """
@@ -72,9 +44,15 @@ def map_list_to_price(line):
                        coin_pair=line[2])
 
 
-def get_web_content(page, url, target_exchanges=TARGET_EXCHANGE_MAP):
-    if page <= 0:
-        raise Exception("there is no web content for url: "+ url)
+def get_web_content(url, target_exchanges=TARGET_EXCHANGE_MAP):
+    """
+    request for crypto price page and convert to dict of CryptoPrice
+
+    :param url:                 price url to crawl
+    :param target_exchanges:    internal map to filter needed information
+    :return:                    dict<CryptoPrice>
+    """
+
     code = requests.get(url)
     plain = code.text
     s = BeautifulSoup(plain, "html.parser")
@@ -88,7 +66,5 @@ def get_web_content(page, url, target_exchanges=TARGET_EXCHANGE_MAP):
             # check if the exchange we want
             if filtered_line[1] in target_exchanges:
                 exchange_price[filtered_line[0]] = map_list_to_price(filtered_line)
-    print(exchange_price)
+    return exchange_price
 
-
-get_web_content(1, "https://coinmarketcap.com/currencies/bitcoin/#markets")
