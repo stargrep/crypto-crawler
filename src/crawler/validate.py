@@ -4,29 +4,32 @@ from src.common.app_constant import CRYPTO_SYMBOL_SET, BITCOIN_PRICE_VALIDATE_MA
 from src.data_model import CryptoPrice
 
 
-def validate_price_record(price):
+def validate_price_record(crypto):
     """
     validation module for crypto price
 
-    :param price: CryptoPrice
+    :param crypto: CryptoPrice
     :return: bool
     """
-    if type(price) is not CryptoPrice:
-        raise Exception("input should be a crypto price object while it's " + price)
+    if type(crypto) is not CryptoPrice:
+        raise Exception("input should be a crypto price object while it's " + crypto)
 
-    return price.validate() and \
-           price.exchange in TARGET_EXCHANGE_SET and \
-           price.coin_name in CRYPTO_SYMBOL_SET and \
-           (0 < price.price < BITCOIN_PRICE_VALIDATE_MAX) and \
-           (SYSTEM_TIME_MIN_MILLI < price.pricing_epoch_milli < SYSTEM_TIME_MAX_MILLI) and \
-           price.volume > 0
+    return crypto.exchange in TARGET_EXCHANGE_SET and \
+        crypto.coin_name in CRYPTO_SYMBOL_SET and \
+        (0 < crypto.price < BITCOIN_PRICE_VALIDATE_MAX) and \
+        (SYSTEM_TIME_MIN_MILLI < crypto.pricing_epoch_milli < SYSTEM_TIME_MAX_MILLI) and \
+        crypto.volume > 0
+
+
+def filter_invalid_records(crypto_list):
+    return [c for c in crypto_list if validate_price_record(c)]
 
 
 def alarm_price_range(price):
     """
-
+    TODO: check if trigger alarm under some conditions.
 
     :param price: CryptoPrice
     :return: bool
     """
-
+    return False

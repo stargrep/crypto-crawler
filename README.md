@@ -9,8 +9,9 @@ This repo contains:
 3. web service and alerts
 
 ## Install & Deploy
-
-
+pip packages: 
+* simple-model
+* psycopg2-binary
 
 ## Maintainers
 [@MikeW](https://github.com/stargrep).
