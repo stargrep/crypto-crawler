@@ -1,4 +1,5 @@
 # Crypto-Crawler
+> Python 3.7, Flask, simple-model, BeautifulSoup, PostgreSQL
 
 ## Overview
 
