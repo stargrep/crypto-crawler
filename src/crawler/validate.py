@@ -28,6 +28,7 @@ def filter_invalid_records(crypto_list):
 def alarm_price_range(price):
     """
     TODO: check if trigger alarm under some conditions.
+    TODO: send text or email to me!
 
     :param price: CryptoPrice
     :return: bool

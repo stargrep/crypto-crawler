@@ -9,12 +9,13 @@ def get_system_milli():
 def convert_as_number(symbol):
     """
     handle cases:
-        '10.95%' -> 10.95
-        '$404,691,250' -> 404691250
-        '$8105.52' -> 8105.52
+        '  ' or ''      -> 0
+        '10.95%'        -> 10.95
+        '$404,691,250'  -> 404691250
+        '$8105.52'      -> 8105.52
 
-    :param symbol:
-    :return:
+    :param symbol:      string
+    :return:            float
     """
     result = symbol.strip()
     if len(result) == 0:

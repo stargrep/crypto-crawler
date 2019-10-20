@@ -8,10 +8,16 @@ This repo contains:
 2. data model validation and storage
 3. web service and alerts
 
+## Documentation (源码阅读指南)
+1. 
+
 ## Install & Deploy
 pip packages: 
+> conda list
+
 * simple-model
 * psycopg2-binary
+
 
 ## Maintainers
 [@MikeW](https://github.com/stargrep).

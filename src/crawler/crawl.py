@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 from src.common.app_util import get_system_milli, convert_as_number
 from src.data_model import CryptoPrice
-from src.common import COIN_NAME_BITCOIN
+from src.common import COIN_NAME_BITCOIN, TARGET_COIN_PAIR
 from src.common import TARGET_EXCHANGE_SET
 
 
@@ -25,12 +25,17 @@ def map_list_to_price(line):
                        coin_pair=line[2])
 
 
-def get_web_content(url, target_exchanges=TARGET_EXCHANGE_SET):
+def filter_coin_row(line, target_exchanges, target_pairs):
+    return line[2] in target_pairs
+
+
+def get_web_content(url, target_exchanges=TARGET_EXCHANGE_SET, target_pairs=TARGET_COIN_PAIR):
     """
     request for crypto price page and convert to dict of CryptoPrice
 
     :param url:                 price url to crawl
-    :param target_exchanges:    internal map to filter needed information
+    :param target_exchanges:    internal set to filter needed information
+    :param target_pairs:        internal set to filter coin pair
     :return:                    list<CryptoPrice>
     """
 
@@ -45,7 +50,10 @@ def get_web_content(url, target_exchanges=TARGET_EXCHANGE_SET):
             line = row.text
             filtered_line = [i for i in line.split("\n") if len(i) > 0]
             # check if the exchange we want
-            if filtered_line[1] in target_exchanges:
-                exchange_price.append(map_list_to_price(filtered_line))
+            if filter_coin_row(filtered_line, target_exchanges, target_pairs):
+                try:
+                    exchange_price.append(map_list_to_price(filtered_line))
+                except Exception as e:
+                    print(e)
     return exchange_price
 

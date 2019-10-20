@@ -13,7 +13,22 @@ def get_bitcoin_price():
     threading.Timer(BITCOIN_CRAWLING_PERIOD_SEC, get_bitcoin_price).start()
 
 
-@app.route("/")
+# TODO: think about how to implement this end point
+@app.route("/stop-crawl")
+def stop_crawl():
+    """
+    stop crawling but keep web server running
+    :return: string
+    """
+    return "STOPPED!"
+
+
+@app.route("/active-jobs")
+def active_jobs():
+    pass
+
+
+@app.route("/health")
 def health():
     return "GREEN"
 

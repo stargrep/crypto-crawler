@@ -1,5 +1,6 @@
 import psycopg2
 
+
 def database(db_command_func, *data):
     try:
         conn = psycopg2.connect(dbname='mikedb', user='', host='104.198.59.118', password='')
