@@ -21,7 +21,7 @@ def convert_as_number(symbol):
     if len(result) == 0:
         return 0
 
-    result = re.sub('[%$,]', '', result)
+    result = re.sub('[%$, *]', '', result)
 
     return float(result)
 

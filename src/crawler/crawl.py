@@ -27,6 +27,8 @@ def map_list_to_price(line):
 
 def filter_coin_row(line, target_exchanges, target_pairs):
     return line[2] in target_pairs
+    # line[1] in target_exchanges and
+    # return line[2] in target_pairs
 
 
 def get_web_content(url, target_exchanges=TARGET_EXCHANGE_SET, target_pairs=TARGET_COIN_PAIR):
