@@ -2,6 +2,8 @@ from src.common import TARGET_EXCHANGE_SET
 from src.common.app_constant import CRYPTO_SYMBOL_SET, BITCOIN_PRICE_VALIDATE_MAX, SYSTEM_TIME_MAX_MILLI, \
     SYSTEM_TIME_MIN_MILLI
 from src.data_model import CryptoPrice
+from src.notification import send_email
+from src.strategy.signal import arbitrage_signal
 
 
 def validate_price_record(crypto):
@@ -25,12 +27,11 @@ def filter_invalid_records(crypto_list):
     return [c for c in crypto_list if validate_price_record(c)]
 
 
-def alarm_price_range(price):
+def alarm_arbitrage(prices):
     """
-    TODO: check if trigger alarm under some conditions.
-    TODO: send text or email to me!
+    send out email when there is arbitrage signal
 
-    :param price: CryptoPrice
+    :param prices: CryptoPrice
     :return: bool
     """
-    return False
+    send_email(arbitrage_signal(prices))
