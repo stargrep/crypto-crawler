@@ -1,4 +1,6 @@
 from datetime import datetime
+from os import path
+from pathlib import Path
 
 COIN_NAME_BITCOIN = "BitCoin"
 COIN_NAME_ETC = "ETC"
@@ -16,7 +18,7 @@ SYSTEM_DATETIME_MAX = datetime(2099, 12, 31)
 SYSTEM_TIME_MIN_MILLI = SYSTEM_DATETIME_MIN.timestamp() * 1000
 SYSTEM_TIME_MAX_MILLI = SYSTEM_DATETIME_MAX.timestamp() * 1000
 
-BITCOIN_CRAWLING_PERIOD_SEC = 5        # second
+BITCOIN_CRAWLING_PERIOD_SEC = 15        # second
 
 BITCOIN_PRICE_URL = "https://coinmarketcap.com/currencies/bitcoin/#markets"
 
@@ -27,3 +29,11 @@ PROFIT_PERCENTAGE_MIN = 0.03            # 3%
 
 MSG_PREDICTION_NOT_READY = "Currently prediction strategy is not ready yet!"
 
+# PostgreSQL config
+PG_HOST = "104.198.59.118"
+PG_DATABASE = "mikedb"
+PG_USER = "mike"
+PG_PWD = "test"
+
+ROOT_DIR = Path(__file__).resolve().parent.parent.parent
+CSV_FOLDER_PATH = ROOT_DIR.joinpath("files/csv")

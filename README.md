@@ -23,8 +23,8 @@ pip packages:
 * pgsql: http://www.postgresqltutorial.com/postgresql-python/
 * email: https://realpython.com/python-send-email/
 * sms: https://www.fullstackpython.com/blog/send-sms-text-messages-python.html
-
-
+* file: https://treyhunner.com/2018/12/why-you-should-be-using-pathlib/
+* 
 
 
 ## Maintainers

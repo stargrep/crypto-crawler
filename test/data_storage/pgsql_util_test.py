@@ -2,7 +2,7 @@ import unittest
 
 from src.common import SELECT_PUBLIC
 from src.common.app_sql import CREATE_TABLE_DUMMY, INSERT_MANY_DUMMY, SELECT_DUMMY, DELETE_DUMMY, \
-    CREATE_TABLE_CRYPTO, SELECT_CRYPTO
+    CREATE_TABLE_CRYPTO, SELECT_CRYPTO_RECENT_500, DROP_DUMMY
 from src.common.app_util import get_system_milli
 from src.data_storage.pgsql_util import get_data, execute_write, execute_write_many
 
@@ -32,11 +32,13 @@ class SqlUtilTest(unittest.TestCase):
         for result in results:
             execute_write(DELETE_DUMMY, result[0])
         self.assertTrue(len(get_data(SELECT_DUMMY)) == 0)
+        execute_write(DROP_DUMMY)
 
     def testSelectCrypto(self):
         execute_write(CREATE_TABLE_CRYPTO)
-        result = get_data(SELECT_CRYPTO)
+        result = get_data(SELECT_CRYPTO_RECENT_500)
         print(result)
+        print("the crypto table size: " + str(len(result)))
         self.assertTrue(result is not None and len(result) >= 0)
 
 
