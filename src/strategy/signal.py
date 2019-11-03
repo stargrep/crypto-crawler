@@ -20,3 +20,12 @@ def arbitrage_signal(prices):
         "sell": sell
     }
 
+
+def arima_signal():
+    """
+
+    :return: boolean
+    """
+    pass
+
+# Multiple MA signal

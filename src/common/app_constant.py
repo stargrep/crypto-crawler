@@ -32,8 +32,8 @@ MSG_PREDICTION_NOT_READY = "Currently prediction strategy is not ready yet!"
 # PostgreSQL config
 PG_HOST = "104.198.59.118"
 PG_DATABASE = "mikedb"
-PG_USER = "mike"
-PG_PWD = "test"
+PG_USER = ""
+PG_PWD = ""
 
 ROOT_DIR = Path(__file__).resolve().parent.parent.parent
 CSV_FOLDER_PATH = ROOT_DIR.joinpath("files/csv")

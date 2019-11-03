@@ -73,5 +73,12 @@ def get_data(statement):
 
 
 def insert_many(statement, data_list):
+    """
+    insert many record to data bases
+
+    :param statement: insert statement
+    :param data_list: a list of tuple for insertion
+    :return: void
+    """
     execute_write_many(statement, data_list)
     print("insert - " + statement)

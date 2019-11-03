@@ -45,7 +45,7 @@ def smape(y_true, y_pred):
 def arima():
     """
     ARIMA (AutoRegressive Integrated Moving Average)
-    :return:
+    :return: list of prediction
     """
     df = read_as_df("total.csv")
     train_data, test_data = df[0:int(len(df) * 0.8)], df[int(len(df) * 0.8):]
