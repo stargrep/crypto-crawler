@@ -24,7 +24,8 @@ pip packages:
 * email: https://realpython.com/python-send-email/
 * sms: https://www.fullstackpython.com/blog/send-sms-text-messages-python.html
 * file: https://treyhunner.com/2018/12/why-you-should-be-using-pathlib/
-* 
+* arima prediction: https://machinelearningmastery.com/arima-for-time-series-forecasting-with-python/
+* RNN: https://towardsdatascience.com/stock-prediction-using-recurrent-neural-networks-c03637437578
 
 
 ## Maintainers

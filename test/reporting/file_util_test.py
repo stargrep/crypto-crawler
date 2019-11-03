@@ -1,8 +1,7 @@
 import unittest
 from src.common.app_util import get_system_milli
-from src.crawler import get_web_content
-from src.common.app_constant import BITCOIN_PRICE_URL
 from src.reporting import write_as_new_file
+from src.reporting.file_util import read_as_df
 
 
 class SimpleTest(unittest.TestCase):
@@ -13,9 +12,9 @@ class SimpleTest(unittest.TestCase):
         pass
 
     def testWriteFile(self):
-        # this is NOT a very robust test
-        write_as_new_file("test.csv", [["n1", 1], ["n2", 100]], ["col1", "col2"])
-        self.assertTrue(True)
+        unit_test_file = "unit_test.csv"
+        write_as_new_file(unit_test_file, [["n1", 1], ["n2", 100]], ["col1", "col2"])
+        self.assertTrue(len(read_as_df(unit_test_file)) > 0)
 
 
 if __name__ == '__main__':
