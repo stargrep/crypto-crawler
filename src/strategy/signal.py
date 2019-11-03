@@ -1,6 +1,7 @@
 from src.common.app_constant import TRANS_FEE_PERCENTAGE_AVG
 
 
+# https://www.investopedia.com/terms/t/trade-signal.asp
 def arbitrage_signal(prices):
     """
     apply second best arbitrage with ok profit
@@ -18,3 +19,4 @@ def arbitrage_signal(prices):
         "buy": buy,
         "sell": sell
     }
+

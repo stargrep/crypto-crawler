@@ -95,3 +95,23 @@ def score_with_diff(test_list, pred_list, limit, lag):
             score += 1
     return score / size
 
+
+def earning_calculation(pred_list, fee_p):
+    df = read_as_df("total.csv")
+    train_data, test_data = df[0:int(len(df) * 0.8)], df[int(len(df) * 0.8):]
+
+    train_arr = test_data['price'].values
+    test_list = test_data['price'].values.tolist()
+
+    # calculation
+    baseline = np.mean(train_arr)
+    inventory = 0
+    earning = 0
+    for i in range(len(pred_list)):
+        if pred_list[i] < baseline * (1 - fee_p) and inventory < 10:
+            inventory += 1
+            earning -= test_list[i] * (1 + fee_p)
+        elif pred_list[i] > baseline * (1 + fee_p) and 0 < inventory:
+            earning += test_list[i] * (1 - fee_p)
+
+    return earning + inventory * test_list[-1]

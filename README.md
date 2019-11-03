@@ -3,6 +3,8 @@
 
 ## Overview
 
+#### 这份源代码只作为学习交易信号和交易系统知识用途, 未经回测不要用来执行交易
+
 This repo contains:
 1. web crawling and parsing for crypto pricing
 2. data model validation and storage
