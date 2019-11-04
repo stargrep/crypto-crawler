@@ -11,7 +11,10 @@ This repo contains:
 3. web service and alerts
 
 ## Documentation (源码阅读指南)
-1. 
+youtube : https://youtu.be/qZfkcUfnmd8
+
+https://www.jianguoyun.com/p/DdpS0mEQhZriBxjlwJAC
+
 
 ## Install & Deploy
 pip packages: 
@@ -32,6 +35,12 @@ pip packages:
 
 ## How to contribute
 * Fork -> Update codebase -> Add Test -> Submit PR -> Let me know -> Merge
+
+
+## TODO
+1. implement more signals
+2. setup.py
+
 
 ## Maintainers
 [@MikeW](https://github.com/stargrep).
