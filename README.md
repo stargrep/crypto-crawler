@@ -1,53 +1,93 @@
 # Crypto-Crawler
-> Python 3.7, Flask, simple-model, BeautifulSoup, PostgreSQL
+> Python 3.7, Flask, simple-model, BeautifulSoup, MySql
 
 ## Overview
 
 #### 这份源代码只作为学习交易信号和交易系统知识用途, 未经回测不要用来执行交易
 
-This repo contains:
-1. web crawling and parsing for crypto pricing
-2. data model validation and storage
-3. web service and alerts
+### Class 1
+```
 
-## Documentation (源码阅读指南)
-youtube : https://youtu.be/qZfkcUfnmd8
-
-https://www.jianguoyun.com/p/DdpS0mEQhZriBxjlwJAC
-
-
-## Install & Deploy
-pip packages: 
-> conda list
-
-* simple-model
-* psycopg2-binary
-
-## Guidance 
-
-* pgsql: http://www.postgresqltutorial.com/postgresql-python/
-* email: https://realpython.com/python-send-email/
-* sms: https://www.fullstackpython.com/blog/send-sms-text-messages-python.html
-* file: https://treyhunner.com/2018/12/why-you-should-be-using-pathlib/
-* ARIMA prediction: https://machinelearningmastery.com/arima-for-time-series-forecasting-with-python/
-* RNN: https://towardsdatascience.com/stock-prediction-using-recurrent-neural-networks-c03637437578
+学习project结构, 基本文件如下
+- design.md         (设计文档)
+- LICENCE           (授权)
+- .gitignore        (可忽略文件列表)
+- README.md         (读我)
+- requirement.txt   (pip 安装文件)
+- setup.py          (build python project)
+- crypto_crawler    (源代码)
+    - __init__.py
+    - ... 
+- tests             (测试代码)
 
 
-## How to contribute
-* Fork -> Update codebase -> Add Test -> Submit PR -> Let me know -> Merge
+运行步骤
+0. 确定运行的folder
+$ pwd
+${your system dir}/crypto-crawler
 
+1. 设置virtual environment
+$ python -m venv env
+这行命令将会创建 env/ 包含这个env中引入的包
 
-## TODO
-1. implement more signals
-2. setup.py
+2. 使用 env
+$ source env/bin/activate
 
+$ pip list
+Package        Version
+-------------- -------
+pip            20.1.1
+setuptools     41.2.0
+证明在此env下的 pip 是新生成的。
 
-## Maintainers
-[@MikeW](https://github.com/stargrep).
+$ pip install -r requirement.txt
+$ pip list
+Package        Version
+-------------- -------
+click          7.1.2
+Flask          1.1.2
+itsdangerous   1.1.0
+Jinja2         2.11.2
+MarkupSafe     1.1.1
+pip            20.1.1
+setuptools     41.2.0
+Werkzeug       1.0.1
 
+按照 requirement.txt 安装了 Flask
 
-## License
-[MIT](LICENSE) © Mike Wang
+3. build project
+$ python setup.py sdist
+生成 sdist/ 里面会有当前版本(v0.2)的tar.gz文件
 
-For Hudson Edu boot camp usage.
+$ ls dist
+crypto_crawler-0.2.tar.gz
 
+4. pip 安装
+$ pip install dist/crypto_crawler-0.2.tar.gz
+
+5. pip list 查看crypto_crawler安装
+$ pip list
+Package        Version
+-------------- -------
+click          7.1.2
+crypto-crawler 0.2
+Flask          1.1.2
+itsdangerous   1.1.0
+Jinja2         2.11.2
+MarkupSafe     1.1.1
+pip            20.1.1
+setuptools     41.2.0
+Werkzeug       1.0.1
+(env) 
+
+新添加了crypto-crawler包
+
+6. 运行crypto-cralwer包，会执行 crypto_crawler/__main__.py
+$ python -m crypto_crawler
+hello,  https://coinmarketcap.com/currencies/bitcoin/markets
+(env) 
+
+7. 运行测试
+右键点击 tests/ 执行 "Run 'Unittest in tests'"
+
+```
