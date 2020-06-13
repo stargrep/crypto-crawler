@@ -1,1 +1,4 @@
 flask
+pysimplemodel
+requests
+bs4

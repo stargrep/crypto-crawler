@@ -91,3 +91,26 @@ hello,  https://coinmarketcap.com/currencies/bitcoin/markets
 右键点击 tests/ 执行 "Run 'Unittest in tests'"
 
 ```
+
+### Class 2
+Sqlite
+https://www.sqlitetutorial.net/sqlite-data-types/
+https://sqlite.org/cli.html
+
+```
+1. Update requirement.txt
+
+2. data model definition and unit tests
+common.py
+
+3. sqlite 
+https://pythonexamples.org/python-sqlite3-insert-multiple-rows-to-table/
+https://www.sqlitetutorial.net/sqlite-date/
+$ sqlite3 test
+sqlite> .tables
+sqlite> .schema tablename
+sqlite> .headers ON
+
+4. run sql_utils tests
+
+```
