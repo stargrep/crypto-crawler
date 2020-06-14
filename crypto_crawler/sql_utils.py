@@ -8,7 +8,7 @@ def get_connection(db_name: str):
         print("I am unable to connect to the database" + str(e))
 
 
-def execute_read(statement, db_name):
+def read(statement, db_name):
     conn = get_connection(db_name)
     try:
         cursor = conn.cursor()
@@ -22,20 +22,7 @@ def execute_read(statement, db_name):
         conn.close()
 
 
-def execute_write(statement, db_name):
-    conn = get_connection(db_name)
-    try:
-        cursor = conn.cursor()
-        cursor.execute(statement)
-        conn.commit()
-        cursor.close()
-    except Exception as error:
-        print(error)
-    finally:
-        conn.close()
-
-
-def execute_write(statement, db_name, *data):
+def write(statement, db_name, *data):
     conn = get_connection(db_name)
     try:
         cursor = conn.cursor()
@@ -48,7 +35,7 @@ def execute_write(statement, db_name, *data):
         conn.close()
 
 
-def execute_write_many(statement, db_name, data_list):
+def write_many(statement, db_name, data_list):
     conn = get_connection(db_name)
     try:
         cursor = conn.cursor()
@@ -59,17 +46,3 @@ def execute_write_many(statement, db_name, data_list):
         print(error)
     finally:
         conn.close()
-
-
-def create_table_if_not_exist(statement, db_name):
-    execute_write(statement, db_name)
-    print("table created! - " + statement)
-
-
-def get_data(statement, db_name):
-    return execute_read(statement, db_name)
-
-
-def insert_many(statement, db_name, data_list):
-    execute_write_many(statement, db_name, data_list)
-    print("insert - " + statement)

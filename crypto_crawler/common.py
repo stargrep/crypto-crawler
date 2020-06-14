@@ -1,5 +1,10 @@
 import time
 import re
+from datetime import datetime
+
+
+def milli_to_datetime_str(milli):
+    return datetime.fromtimestamp(milli / 1000).strftime('%Y-%m-%d %H:%M:%S')
 
 
 def get_system_milli():
@@ -23,3 +28,5 @@ def convert_as_number(symbol):
     result = re.sub('[%$, *]', '', result)
 
     return float(result)
+
+

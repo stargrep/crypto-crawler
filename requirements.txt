@@ -2,3 +2,9 @@ flask
 pysimplemodel
 requests
 bs4
+twilio
+sklearn
+numpy
+pandas
+matplotlib
+statsmodels

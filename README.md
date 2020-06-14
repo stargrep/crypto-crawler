@@ -114,3 +114,22 @@ sqlite> .headers ON
 4. run sql_utils tests
 
 ```
+
+### Class 3
+```
+0. declar the dunder names
+1. Update common and test
+2. Updae write many for crypto prices
+3. update time str for crypto
+
+4. strategy 2 ways
+5. how to report with ploting 
+6. notification
+7. next?
+(1) alarm trading chances
+(2) daily reporting
+(3) auto-trading
+(4) back-testing
+so many...
+
+```

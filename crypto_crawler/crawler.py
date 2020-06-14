@@ -1,8 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
 
-from crypto_crawler.common import convert_as_number, get_system_milli
-from crypto_crawler.const import TARGET_EXCHANGE_SET, TARGET_COIN_PAIR, COIN_NAME_BITCOIN
+from crypto_crawler.common import convert_as_number, get_system_milli, milli_to_datetime_str
+from crypto_crawler.const import TARGET_EXCHANGE_SET, TARGET_COIN_PAIR, COIN_NAME_BITCOIN, CRYPTO_SYMBOL_SET, \
+    BITCOIN_PRICE_VALIDATE_MAX
 from crypto_crawler.data_model import CryptoPrice
 
 
@@ -13,10 +14,12 @@ def map_list_to_price(line):
     :param line: list
     :return: CryptoPrice
     """
+    current_time = get_system_milli()
     return CryptoPrice(exchange=line[1],
                        coin_name=COIN_NAME_BITCOIN,
                        price=convert_as_number(line[3]),
-                       pricing_time=get_system_milli(),
+                       pricing_time_str=milli_to_datetime_str(current_time),
+                       pricing_time=current_time,
                        volume=convert_as_number(line[4]),
                        volume_p=convert_as_number(line[6]) / 100,
                        fee_type=line[8],
@@ -52,3 +55,23 @@ def get_web_content(url, target_exchanges=TARGET_EXCHANGE_SET, target_pairs=TARG
                 except Exception as e:
                     print(e)
     return exchange_price
+
+
+def validate_price_record(crypto):
+    """
+    validation module for crypto price
+    :param crypto: CryptoPrice
+    :return: bool
+    """
+    if type(crypto) is not CryptoPrice:
+        raise Exception("input should be a crypto price object while it's " + crypto)
+
+    return crypto.exchange in TARGET_EXCHANGE_SET and \
+        crypto.coin_name in CRYPTO_SYMBOL_SET and \
+        (0 < crypto.price < BITCOIN_PRICE_VALIDATE_MAX) and \
+        crypto.volume > 0
+
+
+def filter_invalid_records(crypto_list):
+    return [c for c in crypto_list if validate_price_record(c)]
+
