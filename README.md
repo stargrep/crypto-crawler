@@ -130,6 +130,7 @@ sqlite> .headers ON
 (2) daily reporting
 (3) auto-trading
 (4) back-testing
+(5) other strategy
 so many...
 
 ```

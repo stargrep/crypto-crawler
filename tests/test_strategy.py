@@ -18,17 +18,17 @@ class TestStrategy(unittest.TestCase):
         # self.assertTrue(True)
 
     # Returns True or False.
-    def testPredictARIMA(self):
+    def test_predict_ARIMA(self):
         arima()
         self.assertTrue(True)
 
-    def testArimaValidation(self):
+    def test_Arima_validation(self):
         pred = arima()
         score = arima_validation(pred)
         print(score)
         self.assertTrue(True)
 
-    def testEarningCalculation(self):
+    def test_earning_calculation(self):
         pred = arima()
         earning1 = earning_calculation(arima(), 0.0007)    # 0.07% maker
         earning2 = earning_calculation(arima(), 0.001)    # 0.2% taker
