@@ -9,11 +9,11 @@
 ```
 
 学习project结构, 基本文件如下
-- design.md         (设计文档)
+- design.md         (设计文档) - 仔细阅读设计概况
 - LICENCE           (授权)
 - .gitignore        (可忽略文件列表)
 - README.md         (读我)
-- requirement.txt   (pip 安装文件)
+- requirements.txt  (pip 安装文件)
 - setup.py          (build python project)
 - crypto_crawler    (源代码)
     - __init__.py
@@ -40,7 +40,7 @@ pip            20.1.1
 setuptools     41.2.0
 证明在此env下的 pip 是新生成的。
 
-$ pip install -r requirement.txt
+$ pip install -r requirements.txt
 $ pip list
 Package        Version
 -------------- -------
@@ -53,7 +53,7 @@ pip            20.1.1
 setuptools     41.2.0
 Werkzeug       1.0.1
 
-按照 requirement.txt 安装了 Flask
+按照 requirements.txt 安装了 Flask
 
 3. build project
 $ python setup.py sdist

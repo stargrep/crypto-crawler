@@ -5,7 +5,7 @@ with open('README.md') as f:
 
 setup(
     name='crypto_crawler',
-    version='0.1',
+    version='0.03',
     description='Crypto Crawler for fun',
     long_description=readme,
     author='mike',
