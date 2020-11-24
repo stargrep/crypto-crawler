@@ -40,4 +40,5 @@ def alarm_arbitrage(prices):
     :param prices: CryptoPrice
     :return: bool
     """
-    send_email(arbitrage_signal(prices))
+    print(arbitrage_signal(prices))
+    # send_email(arbitrage_signal(prices))

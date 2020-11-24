@@ -30,5 +30,5 @@ class CryptoPrice(Model):
 
     @staticmethod
     def get_col_list():
-        return ["id", "exchange", "coin_name", "price", "time_str", "time",
+        return ["id", "exchange", "coin_name", "price", "time",
                 "volume", "volume_percentage", "fee_type", "coin_pair"]

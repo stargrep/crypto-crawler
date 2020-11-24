@@ -19,8 +19,8 @@ def arbitrage_signal(prices, fee_value=TRANS_FEE_PERCENTAGE_AVG):
     :return:
     """
     prices.sort(key=lambda price: price.price)
-    buy = prices[1]
-    sell = prices[-2]
+    buy = prices[0]
+    sell = prices[-1]
     avg_profit = (sell.price * (1 - fee_value) - buy.price * (1 + fee_value))
     avg_profit_p = avg_profit / 2 / sell.price * 100
 
@@ -82,7 +82,7 @@ def arima():
 
     predictions = list()
     for t in range(len(test_ar)):
-        model = ARIMA(history, order=(3, 1, 0))
+        model = ARIMA(history, order=(2, 0, 2))
         model_fit = model.fit(disp=0)
         output = model_fit.forecast()
         yhat = output[0]
@@ -131,11 +131,13 @@ def earning_calculation(pred_list, fee_p):
     baseline = np.mean(train_arr)
     inventory = 0
     earning = 0
+    total_val = 100000  # account initial values
     for i in range(len(pred_list)):
         if pred_list[i] < baseline * (1 - fee_p) and inventory < 10:
             inventory += 1
             earning -= test_list[i] * (1 + fee_p)
-        elif pred_list[i] > baseline * (1 + fee_p) and 0 < inventory:
+        elif pred_list[i] > baseline * (1 + fee_p) and inventory > 0:
+            inventory -= 1
             earning += test_list[i] * (1 - fee_p)
 
     return earning + inventory * test_list[-1]
