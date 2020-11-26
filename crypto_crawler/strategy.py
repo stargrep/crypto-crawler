@@ -3,7 +3,6 @@ from sklearn.metrics import mean_squared_error
 from statsmodels.tsa.arima_model import ARIMA
 
 from crypto_crawler.const import TRANS_FEE_PERCENTAGE_AVG, SELECT_CRYPTO_RECENT_500
-from crypto_crawler.data_model import CryptoPrice
 from crypto_crawler.reporting import write_as_new_file, read_as_df, plot_train_and_test, plot_prediction, \
     plot_validation
 from crypto_crawler.sql_utils import read

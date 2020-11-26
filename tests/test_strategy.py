@@ -1,7 +1,7 @@
 import unittest
 
 from crypto_crawler.const import COIN_MARKET_CAP_URL, TEST_DB_NAME
-from crypto_crawler.crawler import get_web_content
+from crypto_crawler.web_api_handler import get_web_content
 from crypto_crawler.strategy import arbitrage_signal, create_crypto_file, arima, arima_validation, earning_calculation
 
 
@@ -9,12 +9,13 @@ class TestStrategy(unittest.TestCase):
 
 
     def test_arbitrage(self):
-        crypto_list = get_web_content(COIN_MARKET_CAP_URL)
+        crypto_list = get_web_content()
         print(arbitrage_signal(crypto_list))
 
 
     def test_create_train(self):
-        create_crypto_file(TEST_DB_NAME)
+        pass
+        # create_crypto_file(TEST_DB_NAME)
         # self.assertTrue(True)
 
     # Returns True or False.

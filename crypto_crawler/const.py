@@ -1,5 +1,7 @@
 from pathlib import Path
 
+A_STOCK_TRADING_FEE_P = 0.15  # 0.15%
+
 COIN_MARKET_CAP_URL = "https://coinmarketcap.com/currencies/bitcoin/markets"
 
 WEB_API_EXCHANGE_PRICE_URL = "https://web-api.coinmarketcap.com/v1/exchange/market-pairs/latest?id="

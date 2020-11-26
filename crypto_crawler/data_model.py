@@ -1,34 +1,45 @@
 from simple_model import Model
 
 
-class CryptoExchange(Model):
-    id: int
-    exchange: str
-    web_site: str
-    start_at: int
-    end_at: int
-    country: str
-    status: str
-
-
-class CryptoPrice(Model):
-    exchange: str
-    coin_name: str
-    price: float
-    pricing_time_str: str = None
-    pricing_time: int
+class StockPrice(Model):
+    code: str
+    trade_at: int
+    trade_at_str: str
+    open: float
+    close: float
+    high: float
+    low: float
     volume: int
-    volume_p: float
-    fee_type: str
-    coin_pair: str
 
     def to_tuple(self):
-        as_tuple = (self.exchange, self.coin_name, self.price,
-                    self.pricing_time, self.volume, self.volume_p,
-                    self.fee_type, self.coin_pair)
-        return as_tuple
+        return (self.code, self.trade_at, self.trade_at_str,
+                self.open, self.close, self.high, self.low, self.volume)
 
     @staticmethod
     def get_col_list():
-        return ["id", "exchange", "coin_name", "price", "time",
-                "volume", "volume_percentage", "fee_type", "coin_pair"]
+        return ["code", "trade_time", "trade_time_str", "open", "close",
+                "high", "low", "volume"]
+
+
+class ProfitResult(Model):
+    buy_at_str: str
+    buy_price: float
+    sell_at_str: str
+    sell_price: float
+    code: str
+    count: int
+    profit: float
+    trading_fee: float
+
+
+class StrategyResult(Model):
+    code: str
+    initial_asset: float
+    start_at_str: str
+    end_at_str: str
+    profit_results: [ProfitResult]
+    net_profit: float
+    net_profit_p: float
+    max_drawdown: float
+    max_drawdown_p: float
+    total_trade_number: int
