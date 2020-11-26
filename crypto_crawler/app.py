@@ -8,7 +8,7 @@ from crypto_crawler.reporting import write_as_new_file
 from crypto_crawler.strategy import create_crypto_file
 from crypto_crawler.technical_analysis import get_data_in_range, append_effect_ratio
 # from crypto_crawler.web_api_handler import get_web_content
-from crypto_crawler.notification import alarm_arbitrage
+# from crypto_crawler.notification import alarm_arbitrage
 from crypto_crawler.sql_utils import write_many, write
 
 app = Flask(__name__)
@@ -48,5 +48,9 @@ def calculate_range(code):
     return send_from_directory(CSV_FOLDER_PATH, "result.csv", as_attachment=True)
 
 
-if __name__ == "__main__":
+def start_app():
     app.run()
+
+
+if __name__ == "__main__":
+    start_app()
