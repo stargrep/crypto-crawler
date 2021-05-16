@@ -12,7 +12,7 @@ app = Flask(__name__)
 crawl_enabled = True
 
 
-def crawl_bitcoin_price():
+def crawl_bitcoin_price() -> None:
     print("start crawling!")
     bitcoin_prices = get_web_content()
     # bitcoin_prices = filter_invalid_records(bitcoin_prices)
@@ -29,14 +29,14 @@ def crawl_bitcoin_price():
 
 
 @app.route("/pause")
-def pause():
+def pause() -> str:
     global crawl_enabled
     crawl_enabled = False
     return "PAUSED!"
 
 
 @app.route("/status")
-def status():
+def status() -> str:
     return "100%"
 
 
