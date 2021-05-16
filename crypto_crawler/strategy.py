@@ -9,7 +9,7 @@ from crypto_crawler.reporting import write_as_new_file, read_as_df, plot_train_a
 from crypto_crawler.sql_utils import read
 
 
-def arbitrage_signal(prices, fee_value=TRANS_FEE_PERCENTAGE_AVG):
+def arbitrage_signal(prices: [], fee_value: float = TRANS_FEE_PERCENTAGE_AVG) -> {}:
     """
     # https://www.investopedia.com/terms/t/trade-signal.asp
 
@@ -33,7 +33,7 @@ def arbitrage_signal(prices, fee_value=TRANS_FEE_PERCENTAGE_AVG):
     }
 
 
-def create_crypto_file(db_name):
+def create_crypto_file(db_name: str) -> None:
     """
     train : test = 4 : 1
     400 100 records
@@ -48,7 +48,7 @@ def create_crypto_file(db_name):
     write_as_new_file("test.csv", test, CryptoPrice.get_col_list())
 
 
-def mse(y_true, y_pred):
+def mse(y_true: [float], y_pred: [float]) -> [float]:
     """
     error functions: Mean Squared Error (MSE)
     :return:
@@ -56,7 +56,7 @@ def mse(y_true, y_pred):
     return mean_squared_error(y_true, y_pred)
 
 
-def smape(y_true, y_pred):
+def smape(y_true: np.array, y_pred: np.array) -> np.array:
     """
     Symmetric Mean Absolute Percentage Error (SMAPE).
     SMAPE is commonly used as an accuracy measure based on relative errors
@@ -65,7 +65,7 @@ def smape(y_true, y_pred):
     return np.mean((np.abs(y_pred - y_true) * 200 / (np.abs(y_pred) + np.abs(y_true))))
 
 
-def arima():
+def arima() -> []:
     """
     ARIMA (AutoRegressive Integrated Moving Average)
     :return: list of prediction
@@ -95,7 +95,7 @@ def arima():
     return predictions
 
 
-def arima_validation(predictions):
+def arima_validation(predictions: []) -> []:
     df = read_as_df("total.csv")
     train_data, test_data = df[0:int(len(df) * 0.8)], df[int(len(df) * 0.8):]
 
@@ -111,7 +111,7 @@ def arima_validation(predictions):
     # smaller than 2% then consider the result is correct
 
 
-def score_with_diff(test_list, pred_list, limit, lag):
+def score_with_diff(test_list: [], pred_list: [], limit: float, lag: int) -> float:
     size = len(test_list) - lag
     score = 0
     for i in range(size):
@@ -120,7 +120,7 @@ def score_with_diff(test_list, pred_list, limit, lag):
     return score / size
 
 
-def earning_calculation(pred_list, fee_p):
+def earning_calculation(pred_list: [], fee_p: float) -> float:
     df = read_as_df("total.csv")
     train_data, test_data = df[0:int(len(df) * 0.8)], df[int(len(df) * 0.8):]
 

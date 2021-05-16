@@ -1,14 +1,15 @@
-import sqlite3
+from sqlite3 import Connection, connect
+from typing import Any
 
 
-def get_connection(db_name: str):
+def get_connection(db_name: str) -> Connection:
     try:
-        return sqlite3.connect(db_name)  # 'test.db'
+        return connect(db_name)  # 'test.db'
     except RuntimeError as e:
         print("I am unable to connect to the database" + str(e))
 
 
-def read(statement, db_name):
+def read(statement: str, db_name: str) -> []:
     conn = get_connection(db_name)
     try:
         cursor = conn.cursor()
@@ -22,7 +23,7 @@ def read(statement, db_name):
         conn.close()
 
 
-def write(statement, db_name, *data):
+def write(statement: str, db_name: str, *data: Any) -> None:
     conn = get_connection(db_name)
     try:
         cursor = conn.cursor()
@@ -35,7 +36,7 @@ def write(statement, db_name, *data):
         conn.close()
 
 
-def write_many(statement, db_name, data_list):
+def write_many(statement: str, db_name: str, data_list: []) -> None:
     conn = get_connection(db_name)
     try:
         cursor = conn.cursor()

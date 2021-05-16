@@ -41,12 +41,12 @@ def status() -> str:
 
 
 @app.route("/")
-def default():
+def default() -> str:
     return "SAMPLE TRADING SYSTEM"
 
 
 @app.route("/create-file")
-def create_file():
+def create_file() -> str:
     create_crypto_file(CRYPTO_DB_NAME)
     return "CREATED!"
 

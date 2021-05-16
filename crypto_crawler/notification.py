@@ -3,10 +3,11 @@ from twilio.rest import Client
 import smtplib
 import ssl
 
+from crypto_crawler.data_model import CryptoPrice
 from crypto_crawler.strategy import arbitrage_signal
 
 
-def send_email(msg):
+def send_email(msg: str) -> None:
     port = 587  # For starttls
     smtp_server = "smtp.gmail.com"
     sender_email = "mikenyc1207@gmail.com"
@@ -22,7 +23,7 @@ def send_email(msg):
         server.sendmail(sender_email, receiver_email, msg)
 
 
-def send_sms(msg):
+def send_sms(msg: str) -> None:
     # the following line needs your Twilio Account SID and Auth Token
     client = Client("AC", "")
 
@@ -34,7 +35,7 @@ def send_sms(msg):
                            body=msg)
 
 
-def alarm_arbitrage(prices):
+def alarm_arbitrage(prices: [CryptoPrice]) -> None:
     """
     send out email when there is arbitrage signal
     :param prices: CryptoPrice

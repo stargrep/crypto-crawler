@@ -22,13 +22,13 @@ class CryptoPrice(Model):
     fee_type: str
     coin_pair: str
 
-    def to_tuple(self):
+    def to_tuple(self) -> ():
         as_tuple = (self.exchange, self.coin_name, self.price,
                     self.pricing_time, self.volume, self.volume_p,
                     self.fee_type, self.coin_pair)
         return as_tuple
 
     @staticmethod
-    def get_col_list():
+    def get_col_list() -> [str]:
         return ["id", "exchange", "coin_name", "price", "time",
                 "volume", "volume_percentage", "fee_type", "coin_pair"]

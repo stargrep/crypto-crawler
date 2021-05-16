@@ -7,24 +7,20 @@ import numpy as np
 from crypto_crawler.const import CSV_FOLDER_PATH
 
 
-def write_as_new_file(file_name, data_list, column_list):
+def write_as_new_file(file_name: str, data_list: [], column_list: []) -> None:
     full_path = path.join(CSV_FOLDER_PATH, file_name)
     df = pd.DataFrame(data_list, columns=column_list)
     df.to_csv(full_path, index=False)
 
 
-def read_as_df(file_name):
+def read_as_df(file_name: str) -> None:
     full_path = path.join(CSV_FOLDER_PATH, file_name)
     return pd.read_csv(full_path)
 
 
-def plot_train_and_test(train_data, test_data, total_data):
+def plot_train_and_test(train_data: pd.DataFrame, test_data: pd.DataFrame, total_data: pd.DataFrame) -> None:
     """
     plot train and test set data as data frame
-    :param train_data: dataframe
-    :param test_data: dataframe
-    :param total_data: dataframe
-    :return: void
     """
     plt.figure(figsize=(12, 7))
     plt.title('Binance Bitcoin Prices')
@@ -37,7 +33,7 @@ def plot_train_and_test(train_data, test_data, total_data):
     plt.show()
 
 
-def plot_prediction(df, test_data, predictions):
+def plot_prediction(df: pd.DataFrame, test_data: pd.DataFrame, predictions: np.array) -> None:
     plt.figure(figsize=(12, 7))
     plt.plot(df['price'], 'green', color='blue', label='Training Data')
     plt.plot(test_data.index, predictions, color='green', marker='o', linestyle='dashed',
@@ -51,7 +47,7 @@ def plot_prediction(df, test_data, predictions):
     plt.show()
 
 
-def plot_validation(df, test_data, predictions):
+def plot_validation(df: pd.DataFrame, test_data: pd.DataFrame, predictions: np.array) -> None:
     plt.figure(figsize=(12, 7))
     plt.plot(test_data.index, predictions, color='green', marker='o', linestyle='dashed', label='Predicted Price')
     plt.plot(test_data.index, test_data['price'], color='red', label='Actual Price')

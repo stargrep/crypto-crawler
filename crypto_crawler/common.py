@@ -3,15 +3,15 @@ import re
 from datetime import datetime
 
 
-def milli_to_datetime_str(milli):
+def milli_to_datetime_str(milli: int) -> str:
     return datetime.fromtimestamp(milli / 1000).strftime('%Y-%m-%d %H:%M:%S')
 
 
-def get_system_milli():
+def get_system_milli() -> int:
     return time.time_ns() // 1000000
 
 
-def convert_as_number(symbol):
+def convert_as_number(symbol: str) -> float:
     """
     handle cases:
         '  ' or ''      -> 0
